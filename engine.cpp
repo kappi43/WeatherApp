@@ -10,15 +10,16 @@ Engine::Engine(QString key)
             qDebug() << reply->errorString();
             return;
         }
-        QString answer = reply->readAll();
-        qDebug() << answer;
+        QJsonParseError parseError;
+        QJsonDocument replyAsJson = QJsonDocument::fromJson(reply->readAll(), &parseError);
+        qDebug() << replyAsJson.object().value("main");
     });
 }
 
 QJsonArray Engine::getWeatherDataForCity(QString cityName)
 {
     QString url = "https://api.openweathermap.org/data/2.5/weather?q=";
-    url = url.append(cityName).append("&appid=").append(apiKey);
+    url = url.append(cityName).append("&appid=").append(apiKey).append("&units=metric");
     QNetworkRequest weatherRequest{QUrl(url)};
     networkManager->get(weatherRequest);
 
