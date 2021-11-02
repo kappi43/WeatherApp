@@ -17,5 +17,5 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_commandLinkButton_clicked()
 {
-    engine.getWeatherDataForCity("Warsaw");
+    engine.getWeatherDataForCity(ui->comboBox->currentText());
 }

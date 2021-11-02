@@ -3,15 +3,15 @@ Engine::Engine(QString key)
 {
     apiKey = key;
     networkManager = new QNetworkAccessManager();
-    QObject::connect(networkManager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply){
-        if (reply->error()) {
-                        qDebug() << reply->errorString();
-                        return;
-                    }
-
-                    QString answer = reply->readAll();
-
-                    qDebug() << answer;
+    QObject::connect(networkManager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply)
+    {
+        if (reply->error())
+        {
+            qDebug() << reply->errorString();
+            return;
+        }
+        QString answer = reply->readAll();
+        qDebug() << answer;
     });
 }
 
