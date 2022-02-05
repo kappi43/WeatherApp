@@ -13,14 +13,14 @@
 class Engine : QObject
 {
 public:
-    Engine(QString apiKey);
-    QJsonArray getWeatherDataForCity(QString cityName);
+    Engine(QString apiKeyd);
+    void getWeatherDataForCity(QString cityName);
+    QNetworkAccessManager* getNetworkManager();
 
 private:
     int getTemperatureFromReply();
     QString apiKey;
     QNetworkAccessManager* networkManager;
-
 };
 
 #endif // ENGINE_H
