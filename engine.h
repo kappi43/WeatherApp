@@ -21,6 +21,7 @@ private:
     int getTemperatureFromReply();
     QString apiKey;
     QNetworkAccessManager* networkManager;
+    QNetworkRequest getWeatherRequestForCity(QString cityName);
 };
 
 #endif // ENGINE_H
