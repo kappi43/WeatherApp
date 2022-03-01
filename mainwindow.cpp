@@ -7,9 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
     , engine("d194df2aacc80f1757cd0a17ea580e51")
 {
     ui->setupUi(this);
-    ui->progressBar->setMinimum(0);
-    ui->progressBar->setMaximum(100);
-    ui->progressBar->setValue(0);
     QObject::connect(engine.getNetworkManager(),  &QNetworkAccessManager::finished, this,[=](QNetworkReply *reply)
     {
         ui->progressBar->setValue(99);
